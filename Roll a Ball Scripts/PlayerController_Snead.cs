@@ -8,6 +8,7 @@ public class PlayerController_Snead : MonoBehaviour
 {
     // Private Variables only show up in the script and can only be edited internally
     private Rigidbody rb;
+    private GameObject focalPoint;
     private float movementX;
     private float movementY;
      
@@ -25,6 +26,7 @@ public class PlayerController_Snead : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        focalPoint = GameObject.Find("Focal Point"); // Finds the game object named Focal Point in the scene
 
         // Set the count to zero 
         count = 0;
@@ -48,11 +50,8 @@ public class PlayerController_Snead : MonoBehaviour
     // This runs roughly every frame but is independant of frame rate, so anything in this function gets checked every frame
     void FixedUpdate()
     {
-        // Creates a vector called movement using the previously assigned input values from Input System 
-        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-
-        // Applies force in the directions of the movement vector to move the ball and multiples the value by speed to make it go faster
-        rb.AddForce(movement * speed);
+        rb.AddForce(focalPoint.transform.forward * speed * movementY);
+        rb.AddForce(focalPoint.transform.right * speed * movementX);
     }
 
     // This function runs every time the player object enters the collider of another object set to Is Trigger
