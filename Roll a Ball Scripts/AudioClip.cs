@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
         {
             StartStopAudio(otherClip, true); // Play the audio clip that was defined over at audio.clip = otherClip, along with true to tell it to play something!
         }
-        if (SomethingHappeningHere = true)
+        if (SomethingHappeningHere == true)
         {
             StartStopAudio(otherClip, false); // Feed it with the AudioClip above to stop the audio playing, along with false to tell it to stop playing something!
         }
