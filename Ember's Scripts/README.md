@@ -13,6 +13,7 @@
 #### WARNING: If your speed variable isn't public, this script may not be able to access it and do it's job.
 1. Add the More Effective Coroutines package to your assets from this link: https://assetstore.unity.com/packages/tools/animation/more-effective-coroutines-free-54975 (Make sure you're signed into the same account you signed into Unity with.)
 2. Add the package to your UnityProject by going to Window -> Package Manager -> Click on More Effective Coroutines -> Install
-3. Now, once that's all said and done, go ahead and attach this script to your Player object.
-4. Next, create a new Object, make it a trigger, give it the "SpeedBoost" trigger, and place it where you wish.
-5. Now, you should be able to run into the speed-boost, and it'll make you faster!
+3. Ensure that the Player Controller script with the speed float is named "PlayerController", and the speed float is named "speed"!
+4. Now, once that's all said and done, go ahead and attach this script to your Player object.
+5. Next, create a new Object, make it a trigger, give it the "SpeedBoost" trigger, and place it where you wish.
+6. Now, you should be able to run into the speed-boost, and it'll make you faster!
