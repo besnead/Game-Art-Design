@@ -10,6 +10,7 @@ using MEC;
 public class RespawnController : MonoBehaviour
 {
     private Vector3 RespawnPosition = Vector3.one + Vector3.up; //Where to save the latest Respawn location, created by the RespawnPoints
+    public Rigidbody rb; //MAKE SURE TO DEFINE THIS IN YOUR INSPECTOR AS YOUR PLAYER RIGIDBODY
     
     void OnTriggerEnter(Collider other)
     {

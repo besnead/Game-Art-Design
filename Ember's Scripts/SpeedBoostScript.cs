@@ -7,7 +7,17 @@ using UnityEngine.UIElements;
 using MEC;
 public class SpeedBoostScript : MonoBehaviour
 {
-    //WARNING: Make sure that your speed variable is PUBLIC, in your PlayerController script so that this script can access it correctly.
+    //WARNING: Make sure that your Player Controller script class is specifically named "PlayerController"!!!!!!
+
+    public float SpeedIncrement = 20; //You can adjust how much it's incremented by via the Unity Inspector! (By default, our friend here is 20.)
+
+    private PlayerController playerControllerVar;
+    private GameObject Player;
+
+    private void Start()
+    {
+        playerControllerVar = Player.GetComponent<PlayerController>(); //Get access to the PlayerController scripts variables.
+    }
     
     void OnTriggerEnter(Collider other)
     {
@@ -20,10 +30,10 @@ public class SpeedBoostScript : MonoBehaviour
 
     private IEnumerator<float> OnSpeedBoost()
     {
-        float ogSpeed = speed; //Create a new float to back up the original speed.
-        speed += 20; //Adjust the speed you want added here, in this example, we're adding +20 speed.
+        float ogSpeed = playerControllerVar.speed; //Create a new float to back up the original speed.
+        speed += SpeedIncrement; //Adjust the speed you want added here, in this example, we're adding +20 speed.
         yield return Timing.WaitForSeconds(10f); //Keep the speed-boost running for 10 seconds.
-        speed = ogSpeed; //Restore the old speed before with the backup.
+        playerControllerVar.speed = ogSpeed; //Restore the old speed before with the backup.
         yield return Timing.WaitForOneFrame;
     }
 }
