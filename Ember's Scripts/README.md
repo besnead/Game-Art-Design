@@ -18,3 +18,12 @@
 5. Go into the inspector for your Player object, and set the Player variable in the inspector to your player GameObject.
 5. Next, create a new Object, make it a trigger, give it the "SpeedBoost" trigger, and place it where you wish.
 6. Now, you should be able to run into the speed-boost, and it'll make you faster!
+
+
+#Embah's Tips n' Tricks
+##Autocomplete with Unity
+1. Navigate to your OneDrive where your Unity is stored
+2. Go to the base directory where you can see a .sln
+3. Right click on it and hit "Create Shortcut"
+4. Copy that shortcut, slap it on your desktop, and run it.
+5. Autocomplete, wooo!!!!
