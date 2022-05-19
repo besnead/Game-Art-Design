@@ -12,7 +12,7 @@ public class SpeedBoostScript : MonoBehaviour
     public float SpeedIncrement = 20; //You can adjust how much it's incremented by via the Unity Inspector! (By default, our friend here is 20.)
 
     private PlayerController playerControllerVar;
-    private GameObject Player;
+    public GameObject Player;
 
     private void Start()
     {
@@ -31,7 +31,7 @@ public class SpeedBoostScript : MonoBehaviour
     private IEnumerator<float> OnSpeedBoost()
     {
         float ogSpeed = playerControllerVar.speed; //Create a new float to back up the original speed.
-        speed += SpeedIncrement; //Adjust the speed you want added here, in this example, we're adding +20 speed.
+        playerControllerVar.speed += SpeedIncrement; //Adjust the speed you want added here, in this example, we're adding +20 speed.
         yield return Timing.WaitForSeconds(10f); //Keep the speed-boost running for 10 seconds.
         playerControllerVar.speed = ogSpeed; //Restore the old speed before with the backup.
         yield return Timing.WaitForOneFrame;

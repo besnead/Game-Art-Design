@@ -15,5 +15,6 @@
 2. Add the package to your UnityProject by going to Window -> Package Manager -> Click on More Effective Coroutines -> Install
 3. Ensure that the Player Controller script with the speed float is named "PlayerController", and the speed float is named "speed"!
 4. Now, once that's all said and done, go ahead and attach this script to your Player object.
+5. Go into the inspector for your Player object, and set the Player variable in the inspector to your player GameObject.
 5. Next, create a new Object, make it a trigger, give it the "SpeedBoost" trigger, and place it where you wish.
 6. Now, you should be able to run into the speed-boost, and it'll make you faster!
