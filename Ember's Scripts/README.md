@@ -20,8 +20,8 @@
 6. Now, you should be able to run into the speed-boost, and it'll make you faster!
 
 
-#Embah's Tips n' Tricks
-##Autocomplete with Unity
+# Embah's Tips n' Tricks
+## Autocomplete with Unity
 1. Navigate to your OneDrive where your Unity is stored
 2. Go to the base directory where you can see a .sln
 3. Right click on it and hit "Create Shortcut"
