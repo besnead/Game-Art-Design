@@ -22,10 +22,10 @@
 
 # Embah's Tips n' Tricks
 ## Autocomplete with Unity
-###Inside Unity:
+### Inside Unity:
 1. Navigate to your settings, and change your preferred editor to Visual Studio
 
-###Outside of Unity:
+### Outside of Unity:
 1. Navigate to your OneDrive where your Unity is stored
 2. Go to the base directory where you can see a .sln
 3. Right click on it and hit "Create Shortcut"
