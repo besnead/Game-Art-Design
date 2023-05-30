@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class Jump : MonoBehaviour
 {
     public float jumpHeight = 7f;
-    public bool isGrounded;
-    public float NumberJumps = 0f;
+    private bool isGrounded;
+    private float NumberJumps = 0f;
     public float MaxJumps = 2;
     private Rigidbody rb;
 
