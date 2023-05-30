@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController_Snead : MonoBehaviour
 {
     // Private Variables only show up in the script and can only be edited internally
     private Rigidbody rb;
-    private GameObject focalPoint;
     private float movementX;
     private float movementY;
-     
+    private int count;
+    private int scenesInProject;
 
     // Public variables show up in the inspector and can be changed by user or other functions
-    public int count;
+    public GameObject cameraFocalPoint;
     public int winCount;
     public float speed;
+    public float maxSpeed;
+    public float levelDelay;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
     public GameObject menuObject; // I created a containter with all the pause menu items that gets turned on and off depending on the state of the game
@@ -26,8 +29,7 @@ public class PlayerController_Snead : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        focalPoint = GameObject.Find("Focal Point"); // Finds the game object named Focal Point in the scene
-
+        
         // Set the count to zero 
         count = 0;
 
@@ -36,6 +38,10 @@ public class PlayerController_Snead : MonoBehaviour
         // Set the text property of the Win Text UI to an empty string, making the 'You Win' (game over message) blank
         winTextObject.SetActive(false);
         menuObject.SetActive(false);
+        scenesInProject = SceneManager.sceneCountInBuildSettings;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // This function reads your input from the Input System and saves the x and y values as variables
@@ -50,8 +56,13 @@ public class PlayerController_Snead : MonoBehaviour
     // This runs roughly every frame but is independant of frame rate, so anything in this function gets checked every frame
     void FixedUpdate()
     {
-        rb.AddForce(focalPoint.transform.forward * speed * movementY);
-        rb.AddForce(focalPoint.transform.right * speed * movementX);
+        rb.AddForce(cameraFocalPoint.transform.forward * speed * movementY);
+        rb.AddForce(cameraFocalPoint.transform.right * speed * movementX);
+
+        if (rb.velocity.magnitude > maxSpeed)
+        {
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+        }
     }
 
     // This function runs every time the player object enters the collider of another object set to Is Trigger
@@ -78,6 +89,17 @@ public class PlayerController_Snead : MonoBehaviour
             // Set the text value of your 'winText'
             winTextObject.SetActive(true); // turns on win text
             menuObject.SetActive(true); // turns on the level select menu
+            StartCoroutine(LoadNextScene());
         }
+    }
+
+    public IEnumerator LoadNextScene()
+    {
+        yield return new WaitForSeconds(levelDelay);
+        if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings - 1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
     }
 }
