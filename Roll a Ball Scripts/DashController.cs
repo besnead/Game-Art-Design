@@ -7,6 +7,7 @@ public class DashController : MonoBehaviour
 {
     public float dashForce = 0;
     public int delayTime;
+    public GameObject cameraFocalPoint;
 
     private Rigidbody rb;
     private float movementX;
@@ -41,8 +42,9 @@ public class DashController : MonoBehaviour
     {
         if (dashable == true)
         {
-            Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-            rb.AddForce(movement.normalized * dashForce, ForceMode.Impulse);
+            //Add the force relative to the camera focal point's position
+            rb.AddForce(cameraFocalPoint.transform.forward * dashForce * movementY, ForceMode.Impulse);
+            rb.AddForce(cameraFocalPoint.transform.right * dashForce * movementX, ForceMode.Impulse);
             dashable = false;
             dashTimer = 0;
         }
