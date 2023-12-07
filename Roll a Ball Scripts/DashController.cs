@@ -12,24 +12,29 @@ public class DashController : MonoBehaviour
     private float movementX;
     private float movementY;
     private bool dashable;
-    private float jumpTimer;
+    private float dashTimer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         dashable = true;
-        jumpTimer = 0;
+        dashTimer = 0;
     }
     
     private void FixedUpdate()
     {
-        movementX = rb.velocity.x;
-        movementY = rb.velocity.z;
-        jumpTimer += Time.deltaTime;
-        if (jumpTimer > delayTime)
+        dashTimer += Time.deltaTime;
+        if (dashTimer > delayTime)
         {
             dashable = true;
         }
+    }
+
+    private void OnMove(InputValue movementValue)
+    {
+        Vector2 movementVector = movementValue.Get<Vector2>();
+        movementX = movementVector.x;
+        movementY = movementVector.y;
     }
     
     void OnDash()
@@ -39,7 +44,7 @@ public class DashController : MonoBehaviour
             Vector3 movement = new Vector3(movementX, 0.0f, movementY);
             rb.AddForce(movement.normalized * dashForce, ForceMode.Impulse);
             dashable = false;
-            jumpTimer = 0;
+            dashTimer = 0;
         }
     }
 
