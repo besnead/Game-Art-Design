@@ -25,7 +25,7 @@ public class LevelController : MonoBehaviour
         }
         else
         {
-            Text.Log("Cannot load previous scene because you are in the first one.");
+            Debug.Log("Cannot load previous scene because you are in the first one.");
         }
     }
 
