@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class JumpScareFunctions : MonoBehaviour
 {
+    // #################################
+    // Attach this script to your player
+    // #################################
+    
     [Header("Image Files:")]
     [Tooltip("This is the UI Image object that will display these images.")]
     public Image jumpScareFrame;
@@ -19,6 +23,7 @@ public class JumpScareFunctions : MonoBehaviour
     [Header("Jumpscare Settings:")]
     public float durationOfJumpScare = 0.3f;
     [Tooltip("Change this to the tag of the objects you want to trigger jumpscares")]
+    // This defaults to your PickUp game object but if you want another trigger just put it in this variable.
     public string triggerTag = "PickUp";
 
     private void Start()
